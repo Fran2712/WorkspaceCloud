@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="com.ejemplo.entidad.Jugador" id="jugador">
+		<property name="dorsal" value="7"></property>
+		<property name="nombre" value="Ronaldo"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Jugador" id="jugador2">
+		<property name="dorsal" value="4"></property>
+		<property name="nombre" value="Ramos"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Jugador" id="jugador3">
+		<property name="dorsal" value="20"></property>
+		<property name="nombre" value="Vinicius"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Jugador" id="jugador4">
+		<property name="dorsal" value="2"></property>
+		<property name="nombre" value="Varane"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Equipo" id="equipo">
+		<property name="nombre" value="Real Madrid"></property>
+		<property name="ciudad" value="Madrid"></property>
+		<property name="jugador">
+			<list>
+				<ref bean="jugador" />
+				<ref bean="jugador2" />
+				<ref bean="jugador3" />
+				<ref bean="jugador4" />
+			</list>
+		</property>
+
+	</bean>
+	<!-- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
+
+	<bean class="com.ejemplo.entidad.Jugador" id="jp1">
+		<property name="dorsal" value="10"></property>
+		<property name="nombre" value="Messi"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Jugador" id="jp2">
+		<property name="dorsal" value="2"></property>
+		<property name="nombre" value="Piqué"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Jugador" id="jp3">
+		<property name="dorsal" value="11"></property>
+		<property name="nombre" value="riqui"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Jugador" id="jp4">
+		<property name="dorsal" value="8"></property>
+		<property name="nombre" value="Naruto"></property>
+	</bean>
+	<bean class="com.ejemplo.entidad.Equipo" id="equipo2">
+		<property name="nombre" value="Fc Barcelona"></property>
+		<property name="ciudad" value="Barcelona"></property>
+		<property name="jugador">
+			<list>
+				<ref bean="jp1" />
+				<ref bean="jp2" />
+				<ref bean="jp3" />
+				<ref bean="jp4" />
+			</list>
+		</property>
+
+	</bean>
+
+
+</beans>

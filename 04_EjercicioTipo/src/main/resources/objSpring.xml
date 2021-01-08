@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="email1" class="com.example.entidad.Email">
+		<property name="id" value="1"></property>
+		<property name="destinatario" value="Akame"></property>
+		<property name="reminente" value="Kirito"></property>
+	</bean>
+	<bean id="email2" class="com.example.entidad.Email">
+		<property name="id" value="1"></property>
+		<property name="destinatario" value="Naruto"></property>
+		<property name="reminente" value="Sasuke"></property>
+	</bean>
+	<bean id="autor1" class="com.example.entidad.Autor">
+		<property name="id" value="1"></property>
+		<property name="nombre" value="Eugeo"></property>
+		<property name="edad" value="19"></property>
+	</bean>
+		<bean id="libro1" class="com.example.entidad.Libro">
+		<property name="autor" ref="autor1"></property>
+		<property name="editorial" value="SM"></property>
+		<property name="isbn" value="77755"></property>
+	</bean>
+
+</beans>

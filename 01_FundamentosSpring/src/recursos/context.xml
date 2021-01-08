@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- este fichero servira para dar de alta a todos nuestros obetos en el 
+	contexto de Sprig los que creemos con "new" seran dados de alta en JVM mientras 
+	que los dados aqui se daran de alta en contexto de spring(Bean) -->
+
+<!-- Para crear un objeto con "Bean" debe tener 2 atributos, la clase a partir 
+	de la queremos que sea el objeto y un ID único -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="entidad.Persona" id="persona1">
+	</bean>
+	<bean class="entidad.Persona" id="persona2">
+		<property name="nombre" value="Todoroki"></property>
+		<property name="edad" value="16"></property>
+		<property name="peso" value="58.4"></property>
+	</bean>
+	<bean class="entidad.Persona" id="persona3" scope="prototype">
+		<property name="edad" value="18"></property>
+	</bean>
+
+	<bean class="entidad.Direccion" id="direccionp1">
+		<property name="tipoVia" value="Calle"></property>
+		<property name="nombreVia" value="De las Peras"></property>
+		<property name="ciudad" value="Madrid"></property>
+	</bean>
+	<bean class="entidad.Persona" id="persona4">
+		<property name="nombre" value="Todoroki"></property>
+		<property name="edad" value="16"></property>
+		<property name="peso" value="58.4"></property>
+		<property name="direccion" ref="direccionp1"></property>
+	</bean>
+	<bean class="entidad.Persona" id="persona5">
+		<property name="nombre" value="Estepicursor"></property>
+		<property name="edad" value="20"></property>
+		<property name="peso" value="80.4"></property>
+		<property name="direccion">
+			<bean class="entidad.Direccion">
+				<property name="tipoVia" value="Avenida"></property>
+				<property name="nombreVia" value="De tu madre"></property>
+				<property name="ciudad" value="Petrogrado"></property>
+			</bean>
+		</property>
+	</bean>
+	<!-- Crear array con datos -->
+	<bean id="arrayPersonasRelleno" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="persona5"></ref>
+				<ref bean="persona4"></ref>
+				<bean class="entidad.Persona" id="persona5">
+					<property name="nombre" value="Shirou"></property>
+					<property name="edad" value="16"></property>
+					<property name="peso" value="60.4"></property>
+					<property name="direccion">
+						<bean class="entidad.Direccion">
+							<property name="tipoVia" value="Calle"></property>
+							<property name="nombreVia" value="Myokubou"></property>
+							<property name="ciudad" value="Fuyuki"></property>
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	<!--  Si tenemos constructor con parametros, podemos usar ese en vez de el otro -->
+	<bean id="persona6" class="entidad.Persona">
+		<constructor-arg index="0" value="André"></constructor-arg>
+		<constructor-arg index="1" value="80"></constructor-arg>
+		<constructor-arg index="2" value="60"></constructor-arg>
+		<constructor-arg index="3" ref ="direccionp1"></constructor-arg>
+	</bean>
+</beans> 

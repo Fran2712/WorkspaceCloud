@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Autowired, autoenlazaado es una caracteristica de Spring la cual podemos 
+	hacer que el contexto injecte dependencias de los objetos de manera autoomatica 
+	sin tener que decirlo explicitamente Existen 2 tipos principales: -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 1-Autowired por tipo: si decimos a un bean que queremos hacer un autoenlazado 
+		por tipo, entonces, el contexto d spring busacara un objeto del tipo que 
+		necesite dentro del conxto y lo enlazara automaticamente <bean id="direccion" 
+		class="entidad.Direccion"> <property name="ciudad" value="Madrid"></property> 
+		</bean> <bean id="direccion2" class="entidad.Direccion"> <property name="ciudad" 
+		value="Barcelona"></property> </bean> <bean id="persona" class="entidad.Persona" 
+		autowire="byType"> <property name="nombre" value="Emiya"></property> </bean> 
+		<bean id="salario" class="entidad.Salario"> <property name="base" value="1500"></property> 
+		</bean> -->
+	<!-- 2-Si tenemos 2 o mas beans de un tipo en el context, spring explota. 
+		En estos casos se hace una inyeccion por nombre, busca un id de un bean cuyos 
+		nombres sea igual al nombre de la propiedad -->
+	<bean id="direccion" class="entidad.Direccion">
+		<property name="ciudad" value="Madrid"></property>
+	</bean>
+	<bean id="direccion2" class="entidad.Direccion">
+		<property name="ciudad" value="Barcelona"></property>
+	</bean>
+	<bean id="persona" class="entidad.Persona" autowire="byName">
+		<property name="nombre" value="Emiya"></property>
+		
+	</bean>
+	<bean id="salario" class="entidad.Salario">
+		<property name="base" value="1500"></property>
+	</bean>
+</beans>
